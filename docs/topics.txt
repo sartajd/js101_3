@@ -1,0 +1,21 @@
+lecture 1: 
+setting up github and git bash
+demonstrate capability of javascript
+talking directly with engine: console, operators arithmatic
+creating code with python
+functions: alert, prompt
+bugs
+improving first program
+variables
+comments
+pseudocode
+further improving
+string and paremeters
+numbers
+
+
+lecture2
+JavaScript Engine, source code, machine code. 
+Talking directly with engine: console
+fixing bugs
+need for variables
