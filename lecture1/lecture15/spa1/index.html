@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>My Webpage</title>
+
+    <script src="./api.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            load_page("first");
+
+            // Set links up to load new pages
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.onclick = ()  => {
+                    load_page(link.dataset.page);
+                    return false; 
+                }
+            })
+        })
+
+
+        function load_page(pageName){
+            // get page content from server
+            getPage(pageName).then(page => {
+                // insert data into DOM
+                document.querySelector("#body").innerHTML = page;
+
+                // Update Page Title
+                document.title = pageName; 
+
+                // update page url
+                history.pushState(null, pageName, pageName)
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="nav">
+        <li><a href="" class="nav-link" data-page="first">First Page</a></li>
+        <li><a href="" class="nav-link" data-page="second">Second Page</a></li>
+        <li><a href="" class="nav-link" data-page="third">Third Page</a></li>
+    </ul>
+    <hr>
+
+    <div id="body"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+1. install vscode
+2. install nodejs
+3. create github account
+4. install git bash on your pc
+5. watch a video on git and github
