@@ -1,0 +1,4 @@
+install git bash
+create a github account and share your username on whatsapp group
+clone the course repository
+-- 

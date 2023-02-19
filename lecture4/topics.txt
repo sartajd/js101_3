@@ -1,0 +1,14 @@
+previous lectures
+operators
+variables
+
+
+functions
+function definition
+anonymous functions
+return values
+side effects
+arguments
+parameters
+default values
+function as value
