@@ -1,0 +1,30 @@
+<script>
+    /*
+        admin ->  Allowed
+        moderator -> Allowed
+        user -> Not Allowed
+        guest -> Not Allowed
+
+    */
+
+    // get role of user
+    let role =  prompt("What is your role?")
+
+    switch(role){
+        case "admin":
+        case "moderator": 
+            alert("Allowed") 
+            break;
+        case "user": 
+        case "guest": 
+            alert("not allowed")
+            break
+        default: 
+            alert("invalid")
+    }
+
+
+
+
+    
+</script>
