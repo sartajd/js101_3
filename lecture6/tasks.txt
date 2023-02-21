@@ -1,0 +1,25 @@
+1. create multiplication tables from 2 upto 10
+2. write a program that prints from 29 to 63 to the console.
+for example: 
+29
+30
+31
+...
+
+3. write a program that prints from 200 to 63 to the console.
+for example: 
+200
+199
+198
+...
+
+4. write a program that prints all numbers divisible by 2 and 3, from 0 to 1000. 
+for example: 
+6
+12
+18
+...
+
+5. (if you fill more confident) write a function called "getNum()" that
+takes a string as argument, if a user input something which is not a number,
+it should prompt again. 
