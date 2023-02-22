@@ -1,0 +1,24 @@
+<script>
+    const NUM = 5
+
+    let scores = []
+
+    // get scores from user
+    // off-by-one error
+    for(let i = 0; i < NUM; i++){
+        let score = Number(prompt("score:"))
+        scores.push(score)
+    }
+
+    let total = 0
+    // calcualte average
+    for(let i = 0; i < scores.length; i++){
+        // short-hand notation
+        total += scores[i]
+    } 
+
+    let average = total / scores.length
+    console.log(average)
+
+
+</script>
