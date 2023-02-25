@@ -1,0 +1,29 @@
+checking if property exists
+propertyName in objectName
+nested objects
+
+
+// object methods
+add later
+method as anonymous function
+shorthand method syntax
+this value inside object // getFullName()
+
+// prototype and prototype chain
+// class
+// entity relationship diagram 
+// 
+
+
+
+// stack vs heap
+// stack is fixed
+// heap is resizable
+
+two types of values: 
+- primitive values
+- reference values
+
+// copying by value vs copying by reference
+
+

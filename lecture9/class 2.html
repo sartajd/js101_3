@@ -1,0 +1,41 @@
+<script>
+    class Person {
+        constructor(name){
+            this.name = name 
+        }
+
+        sayHi(){
+            console.log("Hi")
+        }
+    }
+
+    class Student extends Person{
+        constructor(name, grade){
+            super(name)
+            this.grade = grade
+        }
+
+        study(){
+            console.log("studying ..... ")
+        }
+    }
+
+    
+    class Teacher extends Person{
+        constructor(name, course){
+            super(name)
+            this.course = course 
+        }
+
+        teach(){
+            console.log('teaching . . . .')
+        }
+    }
+
+
+    const ahmad = new Student("Ahmad", 20)
+    const ali = new Student("Ali", 15)
+
+    const abdullah = new Teacher("Abdullah", "math")
+
+</script>
