@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>RGB</title>
+    </head>
+    <body>
+        color: 
+        <select name="color" id="color">
+            <option value="">default</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+        </select>
+
+
+        <script>
+            document.querySelector("#color").onchange = function(e){
+                // change background color accordinglly
+                document.querySelector("body").style.backgroundColor = e.target.value
+            }
+        </script>
+    </body>
+</html>

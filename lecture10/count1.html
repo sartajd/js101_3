@@ -1,0 +1,27 @@
+<!-- seperation of concern -->
+<html>
+    <head>
+        <title>Counter</title>
+    </head>
+    <body>
+        <h1>0</h1>
+        <button >+</button>
+
+
+        <script>
+            let count = 0 
+            
+            function increment(){
+                // increase count by 1
+                count++
+                // Update the DOM
+                const h1 = document.querySelector("h1")
+                h1.innerHTML = count
+            }
+
+            const button = document.querySelector("button")
+            button.onclick = increment
+
+        </script>
+    </body>
+</html>

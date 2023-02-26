@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Goodbye</title>
+
+        <script>
+            function goodbye(){
+                // change h1 content to goodbye
+                const header = document.querySelector("h1")
+                if(header.innerHTML === "GoodBye!"){
+                    header.innerHTML = "Hello"
+                }
+                else {
+                    header.innerHTML = "GoodBye!"
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <button onclick="goodbye()">Goodbye</button>
+    </body>
+</html>
