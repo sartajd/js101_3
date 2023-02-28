@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Event0</title>
+    </head>
+    <body>
+        <button>CLick Me</button>
+
+
+        <script>
+            function salam(){
+                console.log("Salam")
+            }
+
+            function greet(){
+                console.log("How are you?")
+            }
+
+            document.querySelector("button").addEventListener("click", salam)
+            document.querySelector("button").addEventListener("click", greet)            
+        </script>
+    </body>
+</html>

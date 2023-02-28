@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Blink</title>
+
+        <style>
+            h1 {
+                color: red;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <h1>Warning</h1>
+
+        <script>
+            function blink(){
+                const h1 = document.querySelector("h1")
+                if(h1.style.visibility === "hidden"){
+                    h1.style.visibility = "visible"
+                }
+                else {
+                    h1.style.visibility = "hidden"
+                }
+
+            }
+
+
+            setInterval(blink, 500)
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Location</title>
+    </head>
+    <body>
+        <h1>Location</h1>
+        <p></p>
+        
+        <script>
+            navigator.geolocation.getCurrentPosition(function(position){
+                document.querySelector("p").innerHTML = position.coords.latitude + ", " + position.coords.longitude
+            })
+        </script>
+    </body>
+</html>

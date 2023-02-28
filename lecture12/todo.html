@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Todo List</title>
+    </head>
+    <body>
+        <h1>Tasks</h1>
+        <ul>
+        </ul>
+
+        <form id="form">
+            <input id="newTask" placeholder="enter new task">
+            <button>Add</button>
+        </form>
+
+
+        <script>
+            // sessionstorage
+
+            function addTask(task){
+                // create an li element and insert task
+                const li = document.createElement("li")
+                li.innerHTML = task
+
+                // create a button and insert it inside li
+                const btn = document.createElement("button")
+                btn.innerHTML = "Done"
+                btn.className = "done"
+                btn.onclick = function(){
+                    btn.parentNode.remove()
+                }
+                li.appendChild(btn)
+
+                // append it to ul
+                document.querySelector("ul").appendChild(li)
+            }
+
+            document.querySelector("#form").addEventListener("submit", function(event){
+                const newTask = document.querySelector("#newTask").value
+                // if input is not empty, add new task
+                if(newTask !== ""){
+                    addTask(newTask) 
+                    // clear the input field
+                    document.querySelector("#newTask").value = ""
+                }
+                
+                // prevent page from reloading
+                event.preventDefault()
+            })
+
+
+        </script>
+    </body>
+</html>

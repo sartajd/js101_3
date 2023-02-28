@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Count</title>
+    </head>
+    <body>
+        <h1>0</h1>
+        <button>+</button>
+
+        <script>
+            let counter = localStorage.getItem("counter") || 0 
+            document.querySelector("h1").innerHTML = counter
+
+            document.querySelector("button").onclick = function(){
+                counter++
+                // store counter in localstorage
+                localStorage.setItem("counter", counter)
+
+                // localStorage.removeItem(key)
+
+
+                document.querySelector("h1").innerHTML = counter
+            }
+        </script>
+    </body>
+</html>
