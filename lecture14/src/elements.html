@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+
+    <body>
+        
+        <form name="login">
+            <input type="text" name="username" id="username">
+            <input type="text" name="password">
+        </form>
+
+        <script>
+            const username = document.querySelector("#username")
+            console.log(username)
+            username.addEventListener("input", function(event){
+                console.log(username)
+                console.log("print")
+                // primitive types are immutable
+                username.value = username.value.trim()
+            })
+        </script>
+    </body>
+</html>

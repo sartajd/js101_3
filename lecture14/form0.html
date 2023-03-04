@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Form</title>
+        <style>
+            .error-message {
+                font-size: xx-small;
+                color: red;
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="login" novalidate>
+            <div>
+                Username: <input id="username" name="username" required>
+            </div>
+            <small class="error-message">_</small>
+            <div>
+                <button>Proceed</button>
+            </div>
+        </form>
+
+        <script>
+            function validateUsername(){
+                const username = document.querySelector("#username")
+
+                if(username.validity.valueMissing){
+                    username.setCustomValidity("لطفا نام تانرا بنویسید")
+                    document.querySelector("small").innerHTML = username.validationMessage
+                    document.querySelector("small").style.visibility = "visible"
+                }
+                else {
+                    username.setCustomValidity("")
+                    document.querySelector("small").style.visibility = "hidden"
+                }
+            }
+
+            const form = document.querySelector("form")
+
+            form.addEventListener("input", validateUsername)
+            form.addEventListener("submit", function(event){
+
+                validateUsername()
+
+                // check if form is valid
+                if(form.checkValidity()){
+                    form.submit()
+                }else {
+                    event.preventDefault()
+                }
+            })
+        </script>
+    </body>
+</html>

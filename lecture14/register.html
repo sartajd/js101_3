@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            form {
+                margin: 0 auto;
+                border: 1px solid grey;
+                border-radius: 10px;
+                max-width: 350px;
+                padding: 20px;
+                text-align: center;
+            }
+
+            form > div {
+                justify-content: space-between;
+                display: flex;
+                margin: 10px;
+            }
+
+            input:valid {
+                background-color: green;
+            }
+
+            input:invalid {
+                background-color:  red;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <form name="register">
+            <div>
+                Username: <input name="username" required>
+            </div>
+            <div>
+                Password: <input name="password" required>
+            </div>
+            <div>
+                Confirm Password: <input name="password1" required>
+            </div>
+            <div style="justify-content: flex-end;">
+                <button>Login</button>
+            </div>
+        </form>
+
+
+        <script>
+
+            const USERNAME_REQUIRED = "نام تانرا بنوسید"
+            const PASSWORD_REQUIRED = "پاسورد تانرا بنوسید"
+            const PASSWORD_MATCH = "پاسورد باید یکسان باشد"
+
+            document.forms[0].addEventListener('input', function(){
+                const form = document.forms.register
+                const username = form.elements["username"]
+                const password = form.elements["password"]
+                const password1 = form.elements["password1"]
+
+                if(username.validity.valueMissing){
+                    username.setCustomValidity(USERNAME_REQUIRED)
+                }
+                else {
+                    username.setCustomValidity("")
+                }
+
+                if(password.validity.valueMissing){
+                    password.setCustomValidity(PASSWORD_REQUIRED)
+                }
+                else {
+                    password.setCustomValidity("")
+                }
+                if(password1.validity.valueMissing){
+                    password1.setCustomValidity(PASSWORD_REQUIRED)
+                }
+                else if(password1.value !== password.value){
+                    password1.setCustomValidity(PASSWORD_MATCH)
+                }
+                else {
+                    password1.setCustomValidity("")
+                }
+            })
+
+            function validateUsername(){
+                const username = document.querySelector("")
+            }
+        </script>
+    </body>
+</html>

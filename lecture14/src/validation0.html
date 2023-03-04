@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>build-in validation</title>
+
+        <style>
+            input:valid {
+                border: 1px solid green;
+            }
+
+            input:invalid {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="register">
+            Username: <input id="username" type="text" minlength="4" maxlength="10" pattern="^[a-z0-9_.]*$" required> <br>
+            age: <input type="number" min="0" max="200"> <br>
+            email: <input type="email" required><br>
+
+            <button>submit</button>
+        </form>
+
+        <script>
+            const form = document.forms.register
+
+            function validateUsername() {
+                const username = document.querySelector("#username")
+                // check if invalid, customize message
+                if(username.validity.valueMissing){
+                    // show custom message
+                    username.setCustomValidity("نام تانرا بنویسد")
+                }
+                else {
+                    // clear validity
+                    username.setCustomValidity("")
+                }
+            }
+            
+            document.querySelector("#username").addEventListener("input", validateUsername)
+        
+
+            form.addEventListener("submit", function(){
+                validateUsername()
+            })
+        </script>
+    </body>
+</html>

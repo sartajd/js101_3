@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Create Account</title>
+    </head>
+    <body>
+        
+        <form >
+            Username: <input id="username" name="username" required> <br>
+            Password: <input id="password1" type="text" required> <br>
+            Confirm Password: <input id="password2" type="text" required> <br>
+
+            <button>Create Account</button>
+        </form>
+
+
+        <script>
+            const form =  document.querySelector("form")
+            form.addEventListener("submit", function(event){
+                validateUsername()
+                validatePasswords()
+
+                const data = new FormData(form)
+                
+                for(const [key, value] of data){
+                    console.log(`${key}: ${value}`)
+                }
+                // prevent relaoding of page
+                event.preventDefault()
+
+
+            })
+
+            
+            function validateUsername(){
+                const username = document.querySelector("#username")
+                if(username.validity["valueMissing"]){
+                    username.setCustomValidity("لطفا نام تانرا بنویسید")
+                }
+                else {
+                    username.setCustomValidity("")
+                }
+            }
+
+            function validatePasswords(){
+                const password1 = document.querySelector("#password1")
+                const password2 = document.querySelector("#password2")
+
+                if(password1.value !== password2.value){
+                    password2.setCustomValidity("پاسورد تان یکسان نیست")
+                }
+                else {
+                    password2.setCustomValidity("")
+                }
+            }
+
+            document.querySelector("#username").oninput = validateUsername
+            document.querySelector("#password2").oninput = validatePasswords
+        </script>
+    </body>
+</html>
