@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Gender</title>
+    </head>
+    <body>
+        
+        <script>
+            fetch("https://api.genderize.io?name=ahmad").then(function(response){
+                return response.json()
+            })
+            .then(function(data){
+                console.log(data)
+            })
+
+        </script>
+    </body>
+</html>
