@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Quote</title>
+    </head>
+
+    <body>
+        <h1></h1>
+        <button>Load Quote</button>
+        
+        <script>
+            function loadQuote(){
+                fetch("http://127.0.0.1:5500/quote.txt")
+                .then(response => response.text())
+                .then(quote => {
+                    // h1 and insert quote
+                    document.querySelector("h1").innerHTML = quote
+                })
+            }
+
+            document.querySelector("button").onclick = loadQuote
+        </script>
+    </body>
+</html>

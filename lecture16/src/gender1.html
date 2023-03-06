@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Gender</title>
+    </head>
+    <body>
+
+        <form >
+            <label >
+                name: <input type="text" id="name" placeholder="Enter your name here">
+            </label>
+            <button>find gender</button>
+            <label for="" id="result" style="color: green;"></label>
+        </form>
+        
+        <script>
+            document.forms[0].addEventListener("submit", (event) => {
+                const name = document.querySelector("#name").value
+                fetch(`https://api.genderize.io?name=${name}`)
+                .then(function(response){
+                    console.log(response)
+                    // if in 4-- or 5-- status code
+                    if(response.ok){
+                        return response.json()
+                    }
+                    else{
+                        console.log('response not ok')
+                    }
+                })
+                .then(function(data){
+                    // do anything with data
+                    console.log(data)
+                    if(data.count === 0){
+                        document.querySelector("#result").innerHTML = "name not found"
+                        document.querySelector("#result").style.color = "red"
+                    }
+                    else {
+                        document.querySelector("#result").innerHTML = data.gender
+                        document.querySelector("#result").style.color = "green"
+
+                    }
+                })
+                .catch((error) => {
+                    // 
+                    document.querySelector("#result").innerHTML = error.message
+                })
+
+
+
+
+                // prevent page from reloading
+                event.preventDefault()
+
+            })
+
+
+            // fetch(url).then(function()).then(function()).catch(function())
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Quote</title>
+    </head>
+
+    <body>
+        <img src="" alt="Mountain">
+        <button>Load Quote</button>
+        
+        <script>
+            function loadImage(){
+                fetch("http://127.0.0.1:5500/mountain.jpg")
+                .then(response => response.blob())
+                .then(blob => {
+                    const src = URL.createObjectURL(blob)
+                    console.log(src)
+                    document.querySelector("img").setAttribute("src", src)
+                })
+            }
+
+            document.querySelector("button").onclick = loadImage
+        </script>
+    </body>
+</html>

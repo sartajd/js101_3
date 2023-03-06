@@ -1,0 +1,9 @@
+response types: 
+- json()
+- text()
+- blob()
+
+fetching data: 
+- fetch
+- creating promise
+- 

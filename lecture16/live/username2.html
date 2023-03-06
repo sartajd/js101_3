@@ -1,0 +1,95 @@
+<!-- example using promise -->
+<!-- code refactoring -->
+<html>
+    <head>
+        <title>Github User</title>
+
+        <style>
+            .container > img {
+                background-color: grey;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+
+            .container {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+        
+        <form >
+            <label >
+                Username: <input type="text" name="username">
+            </label>
+            <label >
+                <button>search</button>
+            </label>
+        </form>
+        <hr>
+        <div class="container">
+            <img src="" alt="" width="100" height="100" >
+            <h1>name</h1>
+            <p>bio</p>
+        </div>
+
+
+        <script>
+            const URL = "https://api.github.com/users"
+
+            // listen for form submission
+            document.querySelector("form").addEventListener("submit", function(event){
+
+                cleanPreviousData()
+
+                //  get username
+                const username = document.forms[0].elements["username"].value
+
+                getDataFromServer(username)
+                .then(function(data){
+                    insertDataIntoDOM(data)
+                })
+                .catch(function(error){
+                    // 
+                    document.querySelector("h1").innerHTML = "an error has occured"
+                })
+
+                // prevent page from reloading
+                event.preventDefault()
+            })
+
+
+            // function hoisting
+            function cleanPreviousData(){
+                // clean previous data
+                document.querySelector("h1").innerHTML = "loading . . ."
+                document.querySelector("img").setAttribute("src", "")
+            }
+
+            function insertDataIntoDOM(data){
+                // insert data into DOM
+                document.querySelector("h1").innerHTML = data.name || data.login
+                document.querySelector("img").setAttribute("src", data.avatar_url)
+            }
+
+            // a function using promise
+            function getDataFromServer(username){
+                // search and get data from server
+                return new Promise(function(resolve, reject){
+                    fetch(`${URL}/${username}`)
+                    .then(function(response){
+                        return response.json()
+                    })
+                    .then(function(data){
+                        resolve(data)
+                    })
+                    .catch(function(error){
+                        reject(error)
+                    })
+                })
+                
+            }
+        </script>
+    </body>
+</html>

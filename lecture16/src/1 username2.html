@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Github User</title>
+    </head>
+
+    <body>
+        <form >
+            <input type="text" id="username" placeholder="Enter a username">
+            <button>Lookup</button>
+        </form>
+
+        <hr>
+        <img src="" alt="user photo" id="photo" width="100">
+        <h1 id="name"></h1>
+        <script>
+            document.querySelector("form").onsubmit = function(event){
+                // get value from input 
+                const username = document.querySelector("#username").value
+                // search the username using api
+                getUser(username)
+                .then(function(user){
+                    console.log(user)
+                    document.querySelector("#name").innerHTML = user.name || user.login
+                    document.querySelector("#photo").setAttribute("src", user.avatar_url)
+                })
+                .catch(function(error) {
+                    console.log(error)
+                })
+
+                // prevent page from relaoding
+                return false
+            }
+
+
+
+            // promise has three status:
+            // 1. pending: request sent, but no response returned
+            // 2. fullfilled:
+            // 3. rejected: 
+            function getUser(username){
+                return new Promise(function(resolve, reject){
+                    fetch("https://api.github.com/users/" + username)
+                    .then(function(response){
+                        return response.json()
+                    })
+                    .then(function(json){
+                        // return the json
+                        resolve(json)
+                    })
+                    .catch((error) => {
+                        reject(error)
+                    })
+                })
+            }
+            
+
+        </script>
+    </body>
+</html>
