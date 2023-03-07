@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Quote</title>
+        <style>
+            h1 {
+                text-align: center;
+                padding: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>loading ...</h1>
+
+        <script>
+            // fetch the text from server
+            fetch("http://127.0.0.1:5500/quote.txt")
+            .then(function(response){
+                return response.text()
+            })
+            .then(function(text){
+                document.querySelector("h1").innerHTML = text
+            })
+        </script>
+    </body>
+</html>

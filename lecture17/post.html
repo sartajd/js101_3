@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Post</title>
+
+        <style>
+            .post {
+                width: 600px;
+                border: 1px solid grey;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="post">
+            <h2></h2>
+            <p></p>
+        </div>
+
+        <script>
+            // dynamically load post from server
+            const POST_URL = "https://jsonplaceholder.typicode.com/posts"
+
+            function fetchPost(id){
+                return new Promise(function(resolve, reject){
+                    fetch(POST_URL + "/" + id )
+                    .then(function(response){
+                        return response.json()
+                    })
+                    .then(function(post){
+                        resolve(post)
+                    })
+                    .catch(function(error){
+                        reject(error)
+                    })
+                })
+            }
+
+
+            function loadPost(id){
+                fetchPost(id)
+                .then(function(post){
+                    document.querySelector("h2").innerHTML = post.title
+                    document.querySelector("p").innerHTML = post.body
+                })
+            }
+
+            
+
+
+        </script>
+
+    </body>
+</html>

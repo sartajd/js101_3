@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>fetching image</title>
+    </head>
+    <body>
+
+        <button>load image</button>
+
+        
+        <script>
+
+            function loadImage(){
+                // get image from server
+                fetch("http://127.0.0.1:5500/mountain.jpg")
+                .then(function(response){
+                    return response.blob()
+                })
+                .then(function(binary){
+                    const url = URL.createObjectURL(binary)
+                    console.log(url)
+                    // create an image element
+                    // insert image to <img> element
+                    const img = document.createElement("img")
+                    img.setAttribute("src", url)
+                    img.setAttribute("alt", "a snowy mountain")
+                    img.setAttribute("width", "600")
+                    img.setAttribute("height", "600")
+    
+                    // add img element to DOM
+                    document.body.appendChild(img)
+                })
+            }
+
+            document.querySelector("button").onclick = loadImage
+        </script>
+    </body>
+</html>
