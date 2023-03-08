@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Animation 1</title>
+
+        <style>
+            @keyframes move {
+                0% {
+                    left: 0%;
+                }
+                50% {
+                    left: 50%;
+                }
+                100% {
+                    left: 0%;
+                }
+            }
+                
+
+            h1 {
+                position: relative;
+                animation-name: move;
+                animation-duration: 3s;
+                animation-fill-mode: forwards;
+                /* run it forever */
+                animation-iteration-count: infinite;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Hello World</h1>
+
+        <button>play</button>
+
+        <script>
+            const h1 = document.querySelector("h1")
+            // pause it at start
+            h1.style.animationPlayState = 'paused'
+            
+            document.querySelector("button").onclick = () => {
+                // if paused, start it
+                if(h1.style.animationPlayState === 'paused'){
+                    h1.style.animationPlayState = 'running'
+                }
+                else {
+                    // if running, stop it
+                    h1.style.animationPlayState = 'paused'
+                }
+            }
+
+        </script>
+    </body>
+</html>

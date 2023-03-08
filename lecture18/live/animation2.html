@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Animation</title>
+        <style>
+
+            @keyframes move {
+                0% {
+                    left: 0%;
+                }
+                50% {
+                    left: 50%;
+                }
+                100% {
+                    left: 0%;
+                }
+            }
+            
+
+            h1 {
+                position: relative;
+                display: inline;
+                animation-name: move;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
+                animation-play-state: paused;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Hello world</h1>
+        <br>
+        <button>click me</button>
+
+        <script>
+            document.querySelector("button").onclick = function(event){
+                // toggle animation state
+                const h1 = document.querySelector("h1")
+                if(h1.style.animationPlayState === "running"){
+                    h1.style.animationPlayState = "paused"
+                }else {
+                    h1.style.animationPlayState = "running"
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Infinite scroll</title>
+
+        <style>
+            .post {
+                border: 1px solid grey;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 5px;
+                font-size: 30px;
+                font-weight: bold;
+                width: 500px;
+
+                min-height: 100px;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        </style>
+
+        <script src="./api.js"></script>
+    </head>
+    <body>
+        <div class="container">
+
+        </div>
+
+
+        <script>
+            // load 10 posts at start
+            let start = 0; 
+            const COUNT = 10
+
+            function loadPosts(){
+                let x = start;
+                getPosts(x, start + COUNT - 1)
+                .then(posts => {
+                    console.log(posts)
+                    // insert posts into dom
+                    posts.forEach(function(post){
+                        // create div
+                        const div = document.createElement("div")
+                        // add class post
+                        div.classList.add("post")
+                        // insert text
+                        div.innerHTML = post
+                        // append it to container
+                        document.querySelector(".container").appendChild(div)
+    
+                    })
+                    start = start + COUNT
+                })
+            }
+
+            document.addEventListener("scroll", function(event){
+                // if at bottom
+                if(window.scrollY + window.innerHeight + 50 >= document.body.offsetHeight){
+                    loadPosts()
+
+                }
+            })
+
+            document.addEventListener("DOMContentLoaded", function(){
+                loadPosts(start)
+            })
+        </script>
+    </body>
+</html>

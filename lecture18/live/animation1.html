@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Animation</title>
+        <style>
+            @keyframes grow {
+                0% {
+                    font-size: 30px;
+                }
+                50% {
+                    font-size: 70px;
+                }
+                100% {
+                    font-size: 30px;
+                }
+            }
+
+            h1 {
+                animation-name: grow;
+                animation-duration: 2s;
+                animation-fill-mode: backwards;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Hello world</h1>
+    </body>
+</html>
