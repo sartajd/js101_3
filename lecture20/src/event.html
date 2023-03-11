@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <li>
+            <p>Hi, i'm paragraph</p>
+            <button>click me</button>
+        </li>
+        <script>
+            function removeParent(event){
+                event.target.parentNode.remove()
+            }
+
+            document.querySelector("button").onclick = removeParent
+            
+
+        </script>
+    </body>
+
+</html>
