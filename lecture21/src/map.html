@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Map</title>
+    </head>
+    <body>
+        <ul class="container">
+
+        </ul>
+        
+        <script>
+            const todos = ["task1", "task2", "task3"]
+            const lis = todos.map((task) => {
+                // create li
+                const li = document.createElement("li")
+                // insert text
+                li.innerHTML = task
+                // retrun
+                return li
+            })
+
+            lis.forEach(li => document.querySelector(".container").appendChild(li))
+        </script>
+    </body>
+</html>

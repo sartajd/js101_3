@@ -1,0 +1,17 @@
+<script>
+    let students = [
+        {name: "ahmad", score: 49}, 
+        {name: "Ali", score: 90}, 
+        {name: "Abdullah", score: 80}, 
+        {name: "amjad", score: 40}
+    ]
+
+
+    const passed = students.filter(student => student.score > 50)
+
+
+
+
+    const failed = students.filter((student) => student.score < 50)
+    console.log(failed)
+</script>

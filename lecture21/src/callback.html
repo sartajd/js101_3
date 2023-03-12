@@ -1,0 +1,18 @@
+<script>
+    function square(x, callback){
+        let sq =  x ** 2
+        callback(sq)
+    }
+
+    function showResult(number){
+        console.log(`result is ${number}`)
+    }
+
+    function show(x){
+        console.log("x is "  + x)
+    }
+
+    square(3, (x) => console.log("result is " + x) )
+
+
+</script>
