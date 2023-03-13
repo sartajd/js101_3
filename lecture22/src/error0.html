@@ -1,0 +1,30 @@
+<html>
+    <body>
+
+        <h1></h1>
+    <script>
+
+        try {
+            let num1 = Number(prompt("first number: "))
+            let num2 = Number(prompt("second number: "))
+        
+        
+            let total = sum(num1, num2)
+            document.querySelector("h1").innerHTML = total
+        }
+        catch(reason){
+            document.querySelector("h1").innerHTML = reason
+        }
+
+
+
+        function sum(x, y){
+            // if x and y are not numbers, throw an error
+            if(typeof x !== "number" || typeof y !== "number" || isNaN(x) || isNaN(y)){
+                throw new Error("x or y is not a number")
+            }
+            return x + y
+        }
+        </script>
+    </body>
+</html>
