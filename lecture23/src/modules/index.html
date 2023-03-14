@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Modules</title>
+        <script src="./scripts/greetings.js"></script>
+        <script src="./scripts/permissions.js"></script>
+    </head>
+    <body>
+        <h1>Modules</h1>
+
+        <script type="module">
+            import { add, get } from "./scripts/friends.js"
+            import math from "./scripts/math.js"
+            
+            add("Ahmad")
+            add("Ali")
+            add("Abdullah")
+
+            console.log(get())   
+
+            const total = math.add(2,3)
+            console.log(total)
+        </script>
+    </body>
+</html>

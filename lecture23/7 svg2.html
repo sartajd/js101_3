@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    </head>
+
+    <body>
+
+        <svg id="svg" style="width:200px; height:200px; background-color: grey;"></svg>
+
+        <script>
+            const svg = d3.select('#svg');
+
+            const circle = svg.append('circle')
+            .attr('cx', 60)
+            .attr('cy', 60)
+            .attr('r', 50)
+            .style('fill', 'red');
+
+            circle.transition()
+                .duration(1000)
+                .attr('cx', 100)
+                .attr('cy', 100)
+                .style('fill', 'blue')
+        </script>
+    </body>
+</html>
