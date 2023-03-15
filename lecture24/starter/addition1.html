@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel"> 
+
+        function Addition(){
+            // num1, num2, score, response
+            const [num1, setNum1] = React.useState(1)
+            const [num2, setNum2] = React.useState(1)
+            const [score, setScore] = React.useState(0)
+            const [response, setResponse] = React.useState("")
+            const [isWrong, setIsWrong] = React.useState(false)
+            const [win, setWin] = React.useState(false)
+
+
+            function handleChange(event){
+                setResponse(event.target.value)
+            }
+
+            function handleKey(event){
+                if(event.key === "Enter"){
+                    // check answer
+                    if (num1 + num2 === Number(response)){
+                        setIsWrong(false)
+
+                        // 3 
+
+                        // if correct, increase score
+                        setScore(score + 1)
+                        setResponse("")
+
+                        // if score is greater than 3, win
+                        if(score > 3){
+                            setWin(true)
+                        }
+
+
+                        // update num1 and num2
+                        setNum1(Math.ceil(Math.random() * 10))
+                        setNum2(Math.ceil(Math.random() * 10))
+                    }
+                    else {
+                        setIsWrong(true)
+                        setResponse("")
+                    }
+                    
+                }
+            }
+
+            function handleTryAgain(){
+                // score 0
+                // win false
+                setScore(0)
+                setWin(false)
+            }
+
+            if(win){
+                return (
+                    <div>
+                        <h1>You Win!</h1>
+                        <button onClick={handleTryAgain}>try again</button>
+                    </div>
+                )
+            }
+
+            return (
+                <div>
+                    <h1 className={isWrong ? "red": null}>{num1} + {num2}</h1>
+                    <input type="text" value={response} onChange={handleChange} onKeyUp={handleKey}/>
+                    {
+                        isWrong ? <p>Your answer is wrong</p> : null
+                    }
+                    
+                    <p>score: {score}</p>
+                </div>
+            )
+        }
+    
+
+        function App(){
+            return (
+                <>
+                    <Addition />
+                </>
+            )
+        }
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+        // operator[Math.floor(Math.random() * 3)]
+    </script>
+</body>
+</html>
