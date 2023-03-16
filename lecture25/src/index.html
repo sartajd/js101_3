@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <script src="./libraries/react.min.js"></script>
+    <script src="./libraries/react-dom.min.js"></script>
+    <script src="./libraries/babel.min.js"></script>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel"> 
+
+        function Todo(){
+            const [tasks, setTasks] = React.useState([])
+            const [response, setResponse] = React.useState("")
+
+            const handleChange = event => {
+                setResponse(event.target.value)
+            }
+
+            const handleSubmit = event => {
+                // prevent page from reloading
+                event.preventDefault()
+
+                // add task to tasks 
+                const newTasks = [...tasks, response]
+                setTasks(newTasks)
+
+                // clear response
+                setResponse("")
+
+            }
+
+            const handleRemove = event => {
+                const index = event.target.dataset.index
+                const copy = [...tasks]
+                copy.splice(index, 1)
+                console.log(copy)   
+                setTasks(copy)
+            }
+
+            return (
+                <>
+                    <h1>Tasks (2)</h1>
+                    <p>Nothing to do!</p>
+                    <ul>
+                        {
+                            tasks.map((task, i) => (
+                                <li>
+                                    {task}
+                                    <button onClick={handleRemove} data-index={i}>✔️</button>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" placeholder="enter new task" value={response} onChange={handleChange}/>
+                        <button>Add Task</button>    
+                    </form>
+                </>
+            )
+        }
+      
+
+        function App(){
+            return (
+                <>
+                    <Todo />
+                </>
+            )
+        }
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+</html>

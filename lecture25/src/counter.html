@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <script src="./libraries/react.min.js"></script>
+    <script src="./libraries/react-dom.min.js"></script>
+    <script src="./libraries/babel.min.js"></script>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel"> 
+    
+        function Counter(){
+            const [count, setCount] = React.useState(0)
+
+
+            // executed only once on mount
+            React.useEffect(function(){
+                const value = Number(localStorage.getItem("count"))
+                if(value !== null){
+                    setCount(value)
+                }
+            }, []) 
+
+
+            // execute on count update
+            // React.useEffect(function(){
+            //     localStorage.setItem("count", count)
+            // }, [count]) 
+
+
+            // on unmounting
+            React.useEffect(function(){
+                return function(){
+                    console.log(count)
+                    localStorage.setItem("count", count)
+                    console.log("unmounting")
+                }
+            }, [count])
+
+            console.log("Counter function executed")
+
+            function handleIncrement(){
+                setCount(count + 1)
+            }
+
+            return (
+                <div>
+                    <h1>{count}</h1>
+                    <button onClick={handleIncrement}>+</button>
+                </div>
+            )
+        }
+
+        function App(){
+            const [show, setShow] = React.useState(true)
+            return (
+                <>
+                <button onClick={() => setShow(!show)}>toggle show</button>
+                {
+                    show ? <Counter /> : null 
+                }
+                    
+                </>
+            )
+        }
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+</html>
